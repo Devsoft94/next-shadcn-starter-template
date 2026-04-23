@@ -84,14 +84,32 @@ bunx --bun shadcn@latest add <component>
 ## Tools and Techs
 
 ***Dependancies as required***
- + Use `@preact/signals-react` for state management | `bun add  @preact/signals-react`
+ + Use `@preact/signals-react` for state management
+   
+   ```bash
+     bun add  @preact/signals-react
+   ```
  + Use `@tanstack/react-query` for data-mutations, optimistic update and caching
- + Use `zod` for vallidation.
 
+   ```bash
+     bun add  @tanstack/react-query
+   ```
+ + Use `zod` for vallidation.
+ 
+   ```bash
+     bun add  zod
+   ```
  ***Dependancies as required***
   + `onchange` - to run any command on file change (prettier)
+ 
+   ```bash
+     bun add -d onchange
+   ```
   + `prettier-plugin-sort-imports` for sorting.
 
+   ```bash
+     bun add -d prettier-plugin-sort-imports
+   ```
 **Tech Stacks**
 
  + Front-end : Next js (Approuter), prioritize server-component. When we say `exportable or static` then don't use server component so that user can export as static site.
