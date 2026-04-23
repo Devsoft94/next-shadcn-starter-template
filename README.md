@@ -102,13 +102,13 @@ bunx --bun shadcn@latest add <component>
 
 ## Commands
 
-+ **Remove git repo :** `rm -rf .git`
-+ **Add shadcn components :** `bunx --bun shadcn@latest add <component>`
-+ **Start dev server :** `bun dev`
-+ **Build project for production :** `bun run build` 
-+ **Make project Live :** `bun run start` 
-+ **Run linting :** `bun lint` 
-+ **Run fromatter :** `bun format` 
-+ **Run fromatter on file change :** `bun format-w` 
-+ **Run typechecking :** `bun typecheck` 
++ **Remove git repo :** ```bash rm -rf .git````
++ **Add shadcn components :** ```bash bunx --bun shadcn@latest add <component>```
++ **Start dev server :** ```bash bun dev```
++ **Build project for production :** ```bash bun run build ```
++ **Make project Live :** ```bash bun run start``` 
++ **Run linting :** ```bash bun lint``` 
++ **Run fromatter :** ```bash bun format```
++ **Run fromatter on file change :** ```bash bun format-w``` 
++ **Run typechecking :** ```bash bun typecheck```
 
