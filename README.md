@@ -101,11 +101,6 @@ bunx --bun shadcn@latest add <component>
 
 
 ## Commands
-
-+ **Remove git repo :**
-  ```bash
-    rm -rf .git
-  ```
 + **Add shadcn components :**
   ```bash
     bunx --bun shadcn@latest add <component>
@@ -138,4 +133,56 @@ bunx --bun shadcn@latest add <component>
   ```bash
     bun typecheck
   ```
+---
+### Here are the essential Git commands for managing your project and pushing it to the remote repository:
+
++ + **Remove git repo :**
+  ```bash
+    rm -rf .git
+  ```
++ **Command for initializing a new Git repository:**
+```bash
+  git init
+```
+
++ **Command for checking the current status of files:**
+```bash
+ git status
+```
+
++ **Command for staging all changes for a commit:**
+```bash
+ git add .
+```
+
++ **Command for creating a commit with a descriptive message:**
+```bash
+ git commit -m "commit message here..."
+```
+
++ **Command for adding the remote origin URL:**
+```bash
+  git remote add origin <YOUR_NEW_REPO_URL>
+```
+
++ **Command for verifying the remote URL:**
+```bash
+  git remote -v
+```
+
++ **Command for pulling remote changes and rebasing to avoid merge commits:**
+```bash
+  git pull origin main --rebase
+```
+
++ **Command for pushing your code to the remote repository for the first time:**
+```bash
+  git push -u origin main
+```
+
++ **Command for cloaning a repository:**
+```bash
+  git git clone <TARGET_REPO_URL>
+```
+
 
