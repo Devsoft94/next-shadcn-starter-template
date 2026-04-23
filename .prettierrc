@@ -1,0 +1,30 @@
+{
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "plugins": [
+    "prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "tailwindStylesheet": "./styles/globals.css",
+  "tailwindFunctions": [
+    "cn",
+    "cva"
+  ],
+  "importOrder": [
+    "^react$",
+    "^next(/.*)?$",
+    "<THIRD_PARTY_MODULES>",
+    "^@/(.*)$",
+    "^[.]"
+  ],
+  "importOrderParserPlugins": [
+    "typescript",
+    "jsx"
+  ],
+  "importOrderTypeScriptVersion": "5.0.0"
+}

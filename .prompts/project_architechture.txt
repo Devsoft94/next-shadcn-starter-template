@@ -1,0 +1,65 @@
+## **Folder structure** 
+
+├── app/                               # Next.js App Router
+│   ├── (home)/
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── api/                           # Route handlers (if needed)
+│   ├── layout.tsx                     # Root layout
+│   
+
+├── features/                          # Domain-driven modules
+│   └── [feature]/
+│       ├── components/                # UI specific to this feature
+│       ├── actions/                   # Server Actions (validated)
+│       ├── services/                  # API / BaaS interaction layer
+│       ├── queries/                   # React Query (ONLY if used)
+│       │   ├── keys.ts                # Centralized query keys
+│       │   ├── queries.ts             # useQuery hooks
+│       │   └── mutations.ts           # useMutation hooks
+│       ├── store/                     # Signals / client state
+│       ├── schemas/                   # Zod schemas (source of truth)
+│       ├── types/                     # TS types (only if not inferred)
+│       ├── utils/                     # Feature-scoped helpers
+│       ├── constants.ts
+│       └── index.ts                   # Public API of feature
+
+├── shared/                            # Truly global (used in 2+ features)
+│   ├── components/
+│   │   ├── ui/                        # shadcn primitives
+│   │   └── layouts/                   # App shell (Navbar, Footer)
+│   
+│   ├── lib/
+│   │   ├── [baas]/                    # Any BaaS / DB setup will be placed here
+│   │   ├── fetcher.ts                 # Typed fetch wrapper 
+│   │   ├── env.ts                     # Env validation (zod)
+│   │   └── utils/                     # Generic reusable utilities
+│   │       ├── cn.ts                  # Tailwind merge helper
+│   │       └── index.ts               # Barrel export (MANDATORY)
+│   ├── providers/                     # React Query, Theme, etc.
+│   ├── hooks/                         # Global hooks (rare, e.g. useUser)
+│   ├── store/                         # Global signals (minimal)
+│   ├── constants.ts
+│   └── types.ts
+
+├── config/                            # Static configs
+│   └── site.config.ts
+
+├── styles/
+│   ├── globals.css
+│   └── theme.css                      # Design tokens / theme variables
+
+├── public/
+
+├── middleware.ts                      # Auth / edge guards
+
+├── .env.local
+├── .env.example                       # REQUIRED for teams
+
+├── tailwind.config.ts
+├── tsconfig.json
+
+
+> Note: 
+> fetcher.ts : : All external requests MUST go through shared/lib/fetcher.ts
+> 1. When "react-query" is used, create `queries` folder inside `features/[feature-name], where place `keys` & `mutations` folders | Place query-provider in 'shared/lib/providers'
