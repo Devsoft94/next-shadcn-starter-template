@@ -136,7 +136,7 @@ bunx --bun shadcn@latest add <component>
 ---
 ### Here are the essential Git commands for managing your project and pushing it to the remote repository:
 
-+ + **Remove git repo :**
++ **Remove git repo :**
   ```bash
     rm -rf .git
   ```
