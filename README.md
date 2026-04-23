@@ -17,7 +17,7 @@ bunx --bun shadcn@latest add <component>
 
 
 ## **Folder structure** 
-
+```text
 ├── app/                               # Next.js App Router
 │   ├── (home)/
 │   │   ├── layout.tsx
@@ -77,7 +77,7 @@ bunx --bun shadcn@latest add <component>
 ├── tailwind.config.ts
 ├── tsconfig.json
 
-
+```
 > Note: 
 > fetcher.ts : : All external requests MUST go through shared/lib/fetcher.ts
 > 1. When "react-query" is used, create `queries` folder inside `features/[feature-name], where place `keys` & `mutations` folders | Place query-provider in 'shared/lib/providers'
