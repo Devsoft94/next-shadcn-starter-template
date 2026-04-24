@@ -11,68 +11,88 @@ This is a Next.js template with shadcn/ui.
    - Copy bellow code and save as `new-project-init.js`
 
  ```js
-    import { execSync } from "child_process";
-    import fs from "fs";
-    import path from "path";
-    import readline from "readline";
-    import { fileURLToPath } from "url";
+import { execSync } from "child_process";
+import fs from "fs";
+import path from "path";
+import readline from "readline";
+import { fileURLToPath } from "url";
 
-    const repoURL = "https://github.com/Devsoft94/next-shadcn-starter-template.git";
+const repoURL = "https://github.com/Devsoft94/next-shadcn-starter-template.git";
 
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout,
-    });
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-    const question = (query) => new Promise((resolve) => rl.question(query, resolve));
+const question = (query) =>
+  new Promise((resolve) => rl.question(query, resolve));
 
-    async function setup() {
-      console.log("\n🚀 Starting Project Setup...\n");
+async function setup() {
+  console.log("\n🚀 Starting Project Setup...\n");
 
-      const inputName = await question("📁 Enter your project name: ");
-      const projectName = inputName.trim().toLowerCase().replace(/\s+/g, "-");
+  const inputName = await question("📁 Enter your project name: ");
+  const projectName = inputName.trim().toLowerCase().replace(/\s+/g, "-");
 
-      if (!projectName) {
-        console.error("❌ Project name cannot be empty.");
-        process.exit(1);
-      }
+  if (!projectName) {
+    console.error("❌ Project name cannot be empty.");
+    process.exit(1);
+  }
 
-      try {
-        // FIX: Added ${projectName} to the end of the git clone command
-        console.log(`\n🚚 Cloning template into '${projectName}'...`);
-        execSync(`git clone ${repoURL} ${projectName}`, { stdio: "inherit" });
+  const projectPath = path.join(process.cwd(), projectName);
 
-        console.log("📝 Updating package.json...");
-        const pkgPath = path.join(process.cwd(), projectName, "package.json");
+  // ⚠️ Prevent overwrite
+  if (fs.existsSync(projectPath)) {
+    console.error("❌ Folder already exists. Choose a different name.");
+    process.exit(1);
+  }
 
-        if (fs.existsSync(pkgPath)) {
-            const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
-            pkg.name = projectName;
-            fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
-        }
+  try {
+    // 🚚 Clone repo
+    console.log(`\n🚚 Cloning template into '${projectName}'...`);
+    execSync(`git clone ${repoURL} ${projectName}`, { stdio: "inherit" });
 
-        console.log("🧹 Cleaning up setup files...");
-        const currentScriptPath = fileURLToPath(import.meta.url);
-        // Note: This deletes the setup script you just ran
-        fs.unlinkSync(currentScriptPath);
+    // 🧹 Remove .git
+    console.log("🧹 Removing existing git history...");
+    const gitPath = path.join(projectPath, ".git");
 
-        console.log("\n✅ Set up completed!");
-        console.log("\n------------------------------------------------");
-        console.log(`📂 Next steps: cd ${projectName}`);
-        console.log("🛠️  Initialize project : 'bun install'");
-        console.log("🚀 Start dev-server    : 'bun run dev'");
-        console.log("✨ Format on save      : 'bun run format-w'");
-        console.log("------------------------------------------------\n");
-
-      } catch (error) {
-        console.error("\n❌ An error occurred:", error.message);
-      } finally {
-        rl.close();
-      }
+    if (fs.existsSync(gitPath)) {
+      fs.rmSync(gitPath, { recursive: true, force: true });
     }
 
-    setup();
+    // 📝 Update package.json
+    console.log("📝 Updating package.json...");
+    const pkgPath = path.join(projectPath, "package.json");
 
+    if (fs.existsSync(pkgPath)) {
+      const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
+      pkg.name = projectName;
+      fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
+    }
+
+    // 🧹 Cleanup setup script (only if copied into project)
+    console.log("🧹 Cleaning up setup files...");
+    const currentScriptPath = fileURLToPath(import.meta.url);
+
+    if (fs.existsSync(currentScriptPath)) {
+      fs.unlinkSync(currentScriptPath);
+    }
+
+    // ✅ Done
+    console.log("\n✅ Setup completed!");
+    console.log("\n------------------------------------------------");
+    console.log(`📂 Next steps: cd ${projectName}`);
+    console.log("🛠️  Install deps       : bun install");
+    console.log("🚀 Start dev server    : bun run dev");
+    console.log("✨ Format on save      : bun run format-w");
+    console.log("------------------------------------------------\n");
+  } catch (error) {
+    console.error("\n❌ An error occurred:", error.message);
+  } finally {
+    rl.close();
+  }
+}
+
+setup();
  ```
 
 - Run this file `bun new-project-init.js` or `node  new-project-init.js`
