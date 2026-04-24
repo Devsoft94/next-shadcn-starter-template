@@ -270,8 +270,8 @@ Always respond in this structure:
 > - **full-code :** Complete functional code, connected with backend
 ---
 <!--
-## Expected user promt format (Optional)
-+ **Task:** Describe what funtionality & feature i need
+## Expected user prompt format (Optional)
++ **Task:** Describe what funtionality & feature we need
 + **Tech & Tool :** Describe what packages or service to use & programing language
 + **style refs :** Describe colours or any style guide
 + **Output :** Choose from default, backend, full-code
