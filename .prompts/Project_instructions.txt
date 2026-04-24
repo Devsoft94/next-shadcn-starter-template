@@ -264,4 +264,15 @@ Always respond in this structure:
 * If unclear → **ask before implementing**
 * Do NOT over-engineer unnecessarily
 
+> **Code Output** (Important) : 
+> - **default :** Only give front-end part with dummy data
+> - **backend :** Only give backend funtionality code to make front-end work as intended.
+> - **full-code :** Complete functional code, connected with backend
 ---
+<!--
+## Expected user promt format (Optional)
++ **Task:** Describe what funtionality & feature i need
++ **Tech & Tool :** Describe what packages or service to use & programing language
++ **style refs :** Describe colours or any style guide
++ **Output :** Choose from default, backend, full-code
+-->
