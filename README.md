@@ -14,6 +14,7 @@ bunx --bun shadcn@latest add <component>
 
 1. Copy 'nextcn-starter` folder.
 2. Insall all the packages `bun install` or `bun i`
+3. **Quick Setup Guide*
 
 
 ## **Folder structure** 
@@ -200,7 +201,7 @@ bunx --bun shadcn@latest add <component>
 
 + **Command for cloaning a repository:**
 ```bash
-  git git clone <TARGET_REPO_URL>
+  git clone <TARGET_REPO_URL>
 ```
 
 
