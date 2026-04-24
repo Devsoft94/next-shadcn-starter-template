@@ -28,13 +28,13 @@ const question = (query) =>
   new Promise((resolve) => rl.question(query, resolve));
 
 async function setup() {
-  console.log("\n🚀 Starting Project Setup...\n");
+  console.log("\n🚀 Starting Project Setup...\n\n");
 
   const inputName = await question("📁 Enter your project name: ");
   const projectName = inputName.trim().toLowerCase().replace(/\s+/g, "-");
 
   if (!projectName) {
-    console.error("❌ Project name cannot be empty.");
+    console.error("❌ Project name cannot be empty.\n");
     process.exit(1);
   }
 
@@ -42,17 +42,17 @@ async function setup() {
 
   // ⚠️ Prevent overwrite
   if (fs.existsSync(projectPath)) {
-    console.error("❌ Folder already exists. Choose a different name.");
+    console.error("❌ Folder already exists. Choose a different name.\n");
     process.exit(1);
   }
 
   try {
     // 🚚 Clone repo
-    console.log(`\n🚚 Cloning template into '${projectName}'...`);
+    console.log(`\n🚚 Cloning template into '${projectName}'\n`);
     execSync(`git clone ${repoURL} ${projectName}`, { stdio: "inherit" });
 
     // 🧹 Remove .git
-    console.log("🧹 Removing existing git history...");
+    console.log("\n🧹 Removing existing git history...\n");
     const gitPath = path.join(projectPath, ".git");
 
     if (fs.existsSync(gitPath)) {
@@ -60,7 +60,7 @@ async function setup() {
     }
 
     // 📝 Update package.json
-    console.log("📝 Updating package.json...");
+    console.log("\n📝 Updating package.json...\n");
     const pkgPath = path.join(projectPath, "package.json");
 
     if (fs.existsSync(pkgPath)) {
@@ -70,7 +70,7 @@ async function setup() {
     }
 
     // 🧹 Cleanup setup script (only if copied into project)
-    console.log("🧹 Cleaning up setup files...");
+    console.log("\n🧹 Cleaning up setup files...");
     const currentScriptPath = fileURLToPath(import.meta.url);
 
     if (fs.existsSync(currentScriptPath)) {
