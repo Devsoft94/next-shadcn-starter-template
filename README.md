@@ -18,8 +18,6 @@ bunx --bun shadcn@latest add <component>
    + Copy bellow code and save as `new-project-init.js`
    
     ```js
-       /** ./new-project-init.js **/
-       
        import { execSync } from "child_process";
        import fs from "fs";
        import path from "path";
@@ -84,7 +82,7 @@ bunx --bun shadcn@latest add <component>
 
     ```
 + Run this file `bun new-project-init.js` or `node  new-project-init.js`
-+ 
+ 
   ```txt
    bun new-project-init.js
   ```
