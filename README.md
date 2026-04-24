@@ -14,8 +14,80 @@ bunx --bun shadcn@latest add <component>
 
 1. Copy 'nextcn-starter` folder.
 2. Insall all the packages `bun install` or `bun i`
-3. **Quick Setup Guide*
+3. **Quick Setup Guide**
+   + Copy bellow code and save as 'new-project-init.js`
+   
+    ```js
+       /** ./new-project-init.js **/
+       
+       import { execSync } from "child_process";
+       import fs from "fs";
+       import path from "path";
+       import readline from "readline";
+       import { fileURLToPath } from "url";
+       
+       const repoURL = "https://github.com/Devsoft94/next-shadcn-starter-template.git";
+       
+       const rl = readline.createInterface({
+         input: process.stdin,
+         output: process.stdout,
+       });
+       
+       const question = (query) => new Promise((resolve) => rl.question(query, resolve));
+       
+       async function setup() {
+         console.log("\n🚀 Starting Project Setup...\n");
+       
+         const inputName = await question("📁 Enter your project name: ");
+         const projectName = inputName.trim().toLowerCase().replace(/\s+/g, "-");
+       
+         if (!projectName) {
+           console.error("❌ Project name cannot be empty.");
+           process.exit(1);
+         }
+       
+         try {
+           // FIX: Added ${projectName} to the end of the git clone command
+           console.log(`\n🚚 Cloning template into '${projectName}'...`);
+           execSync(`git clone ${repoURL} ${projectName}`, { stdio: "inherit" });
+       
+           console.log("📝 Updating package.json...");
+           const pkgPath = path.join(process.cwd(), projectName, "package.json");
+           
+           if (fs.existsSync(pkgPath)) {
+               const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
+               pkg.name = projectName;
+               fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
+           }
+       
+           console.log("🧹 Cleaning up setup files...");
+           const currentScriptPath = fileURLToPath(import.meta.url);
+           // Note: This deletes the setup script you just ran
+           fs.unlinkSync(currentScriptPath);
+       
+           console.log("\n✅ Set up completed!");
+           console.log("\n------------------------------------------------");
+           console.log(`📂 Next steps: cd ${projectName}`);
+           console.log("🛠️  Initialize project : 'bun install'");
+           console.log("🚀 Start dev-server    : 'bun run dev'");
+           console.log("✨ Format on save      : 'bun run format-w'");
+           console.log("------------------------------------------------\n");
+       
+         } catch (error) {
+           console.error("\n❌ An error occurred:", error.message);
+         } finally {
+           rl.close();
+         }
+       }
+       
+       setup();
 
+    ```
++ Run this file `bun new-project-init.js` or `node  new-project-init.js`
++ 
+  ```txt
+   bun new-project-init.js
+  ```
 
 ## **Folder structure** 
 ```text
