@@ -2,14 +2,6 @@
 
 This is a Next.js template with shadcn/ui.
 
-## Adding components
-
-To add components to your app, run the following command:
-
-```bash
-bunx --bun shadcn@latest add <component>
-```
-
 ## User guide
 
 1. Copy 'nextcn-starter` folder.
