@@ -15,7 +15,7 @@ bunx --bun shadcn@latest add <component>
 1. Copy 'nextcn-starter` folder.
 2. Insall all the packages `bun install` or `bun i`
 3. **Quick Setup Guide**
-   + Copy bellow code and save as 'new-project-init.js`
+   + Copy bellow code and save as `new-project-init.js`
    
     ```js
        /** ./new-project-init.js **/
